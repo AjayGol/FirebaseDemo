@@ -30,7 +30,11 @@ export default function CreateAccount() {
         Alert.alert("Invalid Email", "Please enter a valid email address");
         return;
       }
-      if (password !== confirmPassword) {
+      if (password === "") {
+        Alert.alert("Please enter password");
+        return;
+      }
+      if (password === "" || password !== confirmPassword) {
         Alert.alert("Passwords don't match");
         return;
       }
