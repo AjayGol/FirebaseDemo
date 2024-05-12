@@ -40,10 +40,6 @@ export default function RootLayout() {
         }}
       >
         <Stack.Screen
-          name={screenNames.Login}
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen
           name={screenNames.CreateAccount}
           options={{
             headerShown: false,

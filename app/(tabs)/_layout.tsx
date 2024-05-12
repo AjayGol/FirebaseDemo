@@ -14,18 +14,15 @@ export default function TabLayout() {
       screenOptions={{
         tabBarActiveTintColor: Colors[colorScheme ?? "light"].tint,
         headerShown: false,
+        tabBarStyle: { backgroundColor: "#FFF", height: 0 },
       }}
     >
       <Tabs.Screen
+        // Name of the route to hide.
         name="index"
         options={{
-          title: screenNames.Login,
-          tabBarIcon: ({ color, focused }) => (
-            <TabBarIcon
-              name={focused ? "home" : "home-outline"}
-              color={color}
-            />
-          ),
+          // This tab will no longer show up in the tab bar.
+          href: null,
         }}
       />
     </Tabs>

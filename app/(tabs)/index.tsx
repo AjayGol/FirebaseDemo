@@ -1,20 +1,24 @@
 import React, { useState } from "react";
-import {
-  View,
-  TextInput,
-  Text,
-  TouchableOpacity,
-  Alert,
-} from "react-native";
+import { View, TextInput, Text, TouchableOpacity, Alert } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import firebaseApp from "../../firebase";
-import { styles } from '../styled';
+import { styles } from "../styled";
 import screenNames from "@/components/navigation/ScreenNames";
 
 export default function LoginScreen() {
   const navigation = useNavigation();
-  const { loginContainer, commonTextInput, signUpContainer, signUpText, dividerContainer, line, textInputMainView, text, loginButtonContainer } = styles;
+  const {
+    loginContainer,
+    commonTextInput,
+    signUpContainer,
+    signUpText,
+    dividerContainer,
+    line,
+    textInputMainView,
+    text,
+    loginButtonContainer,
+  } = styles;
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -72,11 +76,8 @@ export default function LoginScreen() {
           secureTextEntry
         />
       </View>
-      <TouchableOpacity
-        style={loginButtonContainer}
-        onPress={handleLogin}
-      >
-           <Text style={signUpText}>{"Login"}</Text>
+      <TouchableOpacity style={loginButtonContainer} onPress={handleLogin}>
+        <Text style={signUpText}>{"Login"}</Text>
       </TouchableOpacity>
     </View>
   );

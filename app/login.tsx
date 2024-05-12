@@ -27,7 +27,7 @@ export default function LoginScreen() {
     try {
       const auth = getAuth(firebaseApp);
       await signInWithEmailAndPassword(auth, email, password);
-      navigation.navigate("new-post");
+      navigation.navigate(screenNames.NewPost);
     } catch (error) {
       Alert.alert("Invalid Credential");
     }
