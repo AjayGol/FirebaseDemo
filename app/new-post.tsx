@@ -14,6 +14,8 @@ import { styles } from "./styled";
 import { dateFormat } from "@/constants/String";
 import { ListDataProps } from "@/app/app.types";
 import { LinearGradient } from "expo-linear-gradient";
+import { Colors } from "@/constants/Colors";
+const { buttonGradient } = Colors.light;
 
 export default function NewPost() {
   const {
@@ -101,7 +103,7 @@ export default function NewPost() {
 
       <TouchableOpacity style={postMessageButton} onPress={handlePostMessage}>
         <LinearGradient
-          colors={["#26BCF2", "#82DAF9"]}
+          colors={buttonGradient}
           start={{ x: 0, y: 0 }}
           end={{ x: 0, y: 1 }}
           style={gradient}
