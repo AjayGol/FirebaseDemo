@@ -1,7 +1,15 @@
 import { StyleSheet } from "react-native";
 import { screenHeight, screenWidth } from "@/constants/Common";
 import { Colors } from "@/constants/Colors";
-const { lineColor, lightBlue, background, text, buttonBorder, textInputBorder,orTextColor} = Colors.light;
+const {
+  lineColor,
+  lightBlue,
+  background,
+  text,
+  buttonBorder,
+  textInputBorder,
+  orTextColor,
+} = Colors.light;
 
 export const styles = StyleSheet.create({
   loginContainer: {
@@ -157,17 +165,8 @@ export const styles = StyleSheet.create({
     color: text,
   },
   textBoxBig: { height: 110 },
-  imageContainer: { height: 100, width: 100, borderRadius: 10},
-  selectImage: {
-    position: "absolute",
-    right: 10,
-    bottom: 15,
-    backgroundColor: lightBlue,
-    padding: 5,
-    borderRadius: 10,
-  },
   gradient: {
     borderRadius: 6,
-    overflow: 'hidden',
+    overflow: "hidden",
   },
 });
