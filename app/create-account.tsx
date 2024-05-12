@@ -6,7 +6,7 @@ import {
   Text,
   TouchableOpacity,
 } from "react-native";
-import { screenHeight, screenWidth } from "@/constants/common";
+import { screenHeight, screenWidth } from "@/constants/Common";
 import { useNavigation } from "@react-navigation/native";
 import { Alert } from "react-native";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth"; // Correct import path
