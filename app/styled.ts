@@ -16,6 +16,8 @@ export const styles = StyleSheet.create({
     borderWidth: 1,
     marginBottom: 10,
     paddingHorizontal: 10,
+    paddingVertical: 10,
+    textAlignVertical: "top",
   },
   signUpContainer: {
     backgroundColor: lightBlue,
