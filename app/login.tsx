@@ -10,7 +10,7 @@ import {
 import { useNavigation } from "@react-navigation/native";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth"; // Correct import path
 import { screenWidth } from "@/constants/common";
-import firebaseApp from "../../firebase"; // Import your firebase configuration
+import firebaseApp from "../firebase"; // Import your firebase configuration
 
 export default function LoginScreen() {
   const navigation = useNavigation();
