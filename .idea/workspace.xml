@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1dace1b5-c30d-4741-a3f1-3bed6e536a80" name="Changes" comment="Added last changes">
-      <change beforePath="$PROJECT_DIR$/app/(tabs)/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(tabs)/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/create-account.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/create-account.tsx" afterDir="false" />
+    <list default="true" id="1dace1b5-c30d-4741-a3f1-3bed6e536a80" name="Changes" comment="File name changes">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/app.types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/app.types.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/new-post.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/new-post.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/styled.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/styles.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/styles.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/styles.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/expo-env.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/expo-env.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/firebase.js" beforeDir="false" afterPath="$PROJECT_DIR$/firebase.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,11 +67,17 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="dart.analysis.tool.window.visible" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/app" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="prettierjs.PrettierConfiguration.Package" value="$PROJECT_DIR$/node_modules/prettier" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
+    <property name="show.migrate.to.gradle.popup" value="false" />
     <property name="ts.external.directory.path" value="$PROJECT_DIR$/node_modules/typescript/lib" />
+    <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -92,6 +100,7 @@
       <workItem from="1715427501326" duration="11278000" />
       <workItem from="1715488344840" duration="2388000" />
       <workItem from="1715491090577" duration="1204000" />
+      <workItem from="1715526523369" duration="3361000" />
     </task>
     <task id="LOCAL-00001" summary="EsLint">
       <created>1715498108132</created>
@@ -114,11 +123,28 @@
       <option name="project" value="LOCAL" />
       <updated>1715522008119</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="File name changes">
+      <created>1715522783765</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1715522783765</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ID_ORDER">
+      <list>
+        <option value="Default.Root" />
+        <option value="Default.Author" />
+        <option value="Default.Date" />
+        <option value="Default.Subject" />
+      </list>
+    </option>
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -135,7 +161,8 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="EsLint" />
     <MESSAGE value="Added last changes" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added last changes" />
+    <MESSAGE value="File name changes" />
+    <option name="LAST_COMMIT_MESSAGE" value="File name changes" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
