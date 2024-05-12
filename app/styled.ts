@@ -1,7 +1,7 @@
 import { StyleSheet } from "react-native";
 import { screenHeight, screenWidth } from "@/constants/Common";
 import { Colors } from "@/constants/Colors";
-const { icon, lightBlue, background, text } = Colors.light;
+const { lineColor, lightBlue, background, text, buttonBorder, textInputBorder,orTextColor} = Colors.light;
 
 export const styles = StyleSheet.create({
   loginContainer: {
@@ -11,7 +11,7 @@ export const styles = StyleSheet.create({
     alignItems: "center",
   },
   commonTextInput: {
-    borderColor: icon,
+    borderColor: textInputBorder,
     height: 40,
     borderWidth: 1,
     marginBottom: 10,
@@ -20,16 +20,17 @@ export const styles = StyleSheet.create({
     textAlignVertical: "top",
   },
   signUpContainer: {
-    backgroundColor: lightBlue,
-    borderRadius: 8,
+    borderColor: buttonBorder,
+    borderWidth: 1,
+    borderRadius: 7,
     marginBottom: 80,
   },
   signUpText: {
     color: background,
-    fontSize: 16,
-    fontWeight: "600",
+    fontSize: 19,
+    fontWeight: "700",
     paddingHorizontal: 70,
-    paddingVertical: 10,
+    paddingVertical: 8,
     alignItems: "center",
     justifyContent: "center",
   },
@@ -41,7 +42,7 @@ export const styles = StyleSheet.create({
     marginBottom: 80,
   },
   line: {
-    backgroundColor: lightBlue,
+    backgroundColor: lineColor,
     width: "20%",
     height: 2,
     marginHorizontal: 10,
@@ -50,9 +51,9 @@ export const styles = StyleSheet.create({
     width: screenWidth * 0.8,
   },
   text: {
-    color: text,
-    fontSize: 16,
-    fontWeight: "regular",
+    color: orTextColor,
+    fontSize: 19,
+    fontWeight: "400",
   },
   textWhite: {
     color: background,
@@ -60,8 +61,9 @@ export const styles = StyleSheet.create({
     fontWeight: "regular",
   },
   loginButtonContainer: {
-    backgroundColor: lightBlue,
-    borderRadius: 8,
+    borderColor: buttonBorder,
+    borderWidth: 1,
+    borderRadius: 7,
     marginTop: 20,
   },
   createPostContainer: {
@@ -83,14 +85,15 @@ export const styles = StyleSheet.create({
     justifyContent: "center",
   },
   createAccountButton: {
-    backgroundColor: lightBlue,
-    borderRadius: 8,
+    borderColor: buttonBorder,
+    borderRadius: 7,
+    borderWidth: 1,
     marginTop: 20,
   },
   createAccountCta: {
     color: background,
-    fontSize: 16,
-    fontWeight: "600",
+    fontSize: 19,
+    fontWeight: "700",
     paddingHorizontal: 70,
     paddingVertical: 10,
     alignItems: "center",
@@ -120,31 +123,33 @@ export const styles = StyleSheet.create({
   newPostText: {
     color: lightBlue,
     fontSize: 35,
-    fontWeight: "bold",
+    fontWeight: "700",
     paddingHorizontal: 50,
     paddingVertical: 10,
     justifyContent: "center",
+    alignSelf: "center",
   },
   newPostInsideText: {
     color: text,
-    fontSize: 16,
-    fontWeight: "regular",
+    fontSize: 19,
+    fontWeight: "400",
     paddingHorizontal: 15,
     paddingVertical: 5,
     justifyContent: "center",
   },
   postAccountCta: {
     color: background,
-    fontSize: 16,
-    fontWeight: "600",
+    fontSize: 19,
+    fontWeight: "700",
     paddingHorizontal: 70,
     paddingVertical: 10,
     alignItems: "center",
     justifyContent: "center",
   },
   postMessageButton: {
-    backgroundColor: lightBlue,
-    borderRadius: 8,
+    borderColor: buttonBorder,
+    borderWidth: 1,
+    borderRadius: 7,
     marginTop: 5,
   },
   textInputCreate: { marginBottom: 40 },
@@ -160,5 +165,9 @@ export const styles = StyleSheet.create({
     backgroundColor: lightBlue,
     padding: 5,
     borderRadius: 10,
+  },
+  gradient: {
+    borderRadius: 6,
+    overflow: 'hidden',
   },
 });

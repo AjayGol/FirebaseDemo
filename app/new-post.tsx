@@ -14,6 +14,7 @@ import { styles } from "./styled";
 import { dateFormat } from "@/constants/String";
 import { ListDataProps } from "@/app/app.types";
 import * as ImagePicker from "expo-image-picker";
+import {LinearGradient} from "expo-linear-gradient";
 
 export default function NewPost() {
   const {
@@ -30,6 +31,7 @@ export default function NewPost() {
     imageContainer,
     selectImage,
     textWhite,
+    gradient,
   } = styles;
   const [messages, setMessages] = useState<ListDataProps[]>([]);
   const [isPostMessage, setIsPostMessage] = useState<string>("");
@@ -122,7 +124,13 @@ export default function NewPost() {
       ) : null}
 
       <TouchableOpacity style={postMessageButton} onPress={handlePostMessage}>
-        <Text style={postAccountCta}>{"Post"}</Text>
+        <LinearGradient
+            colors={['#26BCF2', '#82DAF9']}
+            start={{ x: 0, y: 0 }}
+            end={{ x: 0, y: 1 }}
+            style={gradient}>
+          <Text style={postAccountCta}>Post</Text>
+        </LinearGradient>
       </TouchableOpacity>
     </View>
   );

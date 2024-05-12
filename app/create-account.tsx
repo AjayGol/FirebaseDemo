@@ -5,6 +5,7 @@ import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import firebaseApp from "../firebase";
 import { styles } from "./styled";
 import { emailValidation } from "@/constants/String";
+import {LinearGradient} from "expo-linear-gradient";
 
 export default function CreateAccount() {
   const navigation = useNavigation();
@@ -17,6 +18,7 @@ export default function CreateAccount() {
     createAccountButton,
     textInputCreate,
     loginButton,
+    gradient,
   } = styles;
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
@@ -86,7 +88,13 @@ export default function CreateAccount() {
         style={createAccountButton}
         onPress={onPressCreateAccount}
       >
-        <Text style={createAccountCta}>{"Create Account"}</Text>
+        <LinearGradient
+            colors={['#26BCF2', '#82DAF9']}
+            start={{ x: 0, y: 0 }}
+            end={{ x: 0, y: 1 }}
+            style={gradient}>
+          <Text style={createAccountCta}>{"Create Account"}</Text>
+        </LinearGradient>
       </TouchableOpacity>
       <TouchableOpacity onPress={onPressBack}>
         <Text style={[createAccountCta, loginButton]}>{"Login"}</Text>

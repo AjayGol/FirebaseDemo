@@ -6,6 +6,7 @@ import firebaseApp from "../../firebase";
 import { styles } from "../styled";
 import screenNames from "@/components/navigation/ScreenNames";
 import { emailValidation } from "@/constants/String";
+import {LinearGradient} from "expo-linear-gradient";
 
 export default function LoginScreen() {
   const navigation = useNavigation();
@@ -19,6 +20,7 @@ export default function LoginScreen() {
     textInputMainView,
     text,
     loginButtonContainer,
+    gradient,
   } = styles;
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
@@ -53,7 +55,7 @@ export default function LoginScreen() {
     return (
       <View style={dividerContainer}>
         <View style={line} />
-        <Text style={text}>Or</Text>
+        <Text style={text}>or</Text>
         <View style={line} />
       </View>
     );
@@ -62,7 +64,13 @@ export default function LoginScreen() {
   return (
     <View style={loginContainer}>
       <TouchableOpacity style={signUpContainer} onPress={handleSignUp}>
-        <Text style={signUpText}>{"Sign Up"}</Text>
+        <LinearGradient
+            colors={['#26BCF2', '#82DAF9']}
+            start={{ x: 0, y: 0 }}
+            end={{ x: 0, y: 1 }}
+            style={gradient}>
+            <Text style={signUpText}>Sign up</Text>
+        </LinearGradient>
       </TouchableOpacity>
       {Divider()}
       <View style={textInputMainView}>
@@ -85,7 +93,13 @@ export default function LoginScreen() {
         />
       </View>
       <TouchableOpacity style={loginButtonContainer} onPress={handleLogin}>
-        <Text style={signUpText}>{"Login"}</Text>
+        <LinearGradient
+            colors={['#26BCF2', '#82DAF9']}
+            start={{ x: 0, y: 0 }}
+            end={{ x: 0, y: 1 }}
+            style={gradient}>
+          <Text style={signUpText}>Log In</Text>
+        </LinearGradient>
       </TouchableOpacity>
     </View>
   );
