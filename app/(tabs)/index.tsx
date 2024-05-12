@@ -20,8 +20,8 @@ export default function LoginScreen() {
     text,
     loginButtonContainer,
   } = styles;
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
 
   const handleLogin = async () => {
     if (emailValidation(email)) {
@@ -37,6 +37,7 @@ export default function LoginScreen() {
       navigation.navigate(screenNames.NewPost);
     } catch (error) {
       Alert.alert("Invalid Credential");
+      console.log(error);
     }
   };
 
@@ -47,9 +48,9 @@ export default function LoginScreen() {
   const Divider = () => {
     return (
       <View style={dividerContainer}>
-        <View style={line}></View>
+        <View style={line} />
         <Text style={text}>Or</Text>
-        <View style={line}></View>
+        <View style={line} />
       </View>
     );
   };

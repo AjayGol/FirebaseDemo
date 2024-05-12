@@ -3,7 +3,6 @@ import { View, TextInput, Text, TouchableOpacity, Alert } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import firebaseApp from "../firebase";
-import screenNames from "@/components/navigation/ScreenNames";
 import { styles } from "./styled";
 import { emailValidation } from "@/constants/String";
 
@@ -19,9 +18,10 @@ export default function CreateAccount() {
     textInputCreate,
     loginButton,
   } = styles;
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
+  const [email, setEmail] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
+  const [confirmPassword, setConfirmPassword] = useState<string>("");
+
   const onPressCreateAccount = async () => {
     try {
       if (emailValidation(email)) {
@@ -39,6 +39,7 @@ export default function CreateAccount() {
       navigation.goBack();
     } catch (error) {
       Alert.alert("User already exits");
+      console.log(error);
     }
   };
 

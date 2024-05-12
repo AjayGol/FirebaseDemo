@@ -1,19 +1,18 @@
 import { StyleSheet } from "react-native";
 import { screenHeight, screenWidth } from "@/constants/Common";
 import { Colors } from "@/constants/Colors";
-const { icon, lightBlue, background, text } = Colors?.light;
+const { icon, lightBlue, background, text } = Colors.light;
 
 export const styles = StyleSheet.create({
   loginContainer: {
     flex: 1,
+    backgroundColor: background,
     justifyContent: "center",
     alignItems: "center",
-    paddingHorizontal: 20,
-    backgroundColor: background,
   },
   commonTextInput: {
-    height: 40,
     borderColor: icon,
+    height: 40,
     borderWidth: 1,
     marginBottom: 10,
     paddingHorizontal: 10,
@@ -24,8 +23,8 @@ export const styles = StyleSheet.create({
     marginBottom: 80,
   },
   signUpText: {
-    fontSize: 16,
     color: background,
+    fontSize: 16,
     fontWeight: "600",
     paddingHorizontal: 70,
     paddingVertical: 10,
@@ -40,18 +39,18 @@ export const styles = StyleSheet.create({
     marginBottom: 80,
   },
   line: {
+    backgroundColor: lightBlue,
     width: "20%",
     height: 2,
-    backgroundColor: lightBlue,
     marginHorizontal: 10,
   },
   textInputMainView: {
     width: screenWidth * 0.8,
   },
   text: {
+    color: text,
     fontSize: 16,
     fontWeight: "regular",
-    color: text,
   },
   loginButtonContainer: {
     backgroundColor: lightBlue,
@@ -68,8 +67,8 @@ export const styles = StyleSheet.create({
     marginBottom: 40,
   },
   createAccountText: {
-    fontSize: 35,
     color: lightBlue,
+    fontSize: 35,
     fontWeight: "bold",
     paddingHorizontal: 50,
     paddingVertical: 10,
@@ -82,8 +81,8 @@ export const styles = StyleSheet.create({
     marginTop: 20,
   },
   createAccountCta: {
-    fontSize: 16,
     color: background,
+    fontSize: 16,
     fontWeight: "600",
     paddingHorizontal: 70,
     paddingVertical: 10,
@@ -97,41 +96,39 @@ export const styles = StyleSheet.create({
     marginTop: screenHeight * 0.1,
   },
   newPostContainer: {
-    borderWidth: 2,
     borderColor: lightBlue,
+    borderWidth: 2,
     marginBottom: screenHeight * 0.15,
     width: screenWidth - 20,
     alignSelf: "center",
   },
   newPostInsideContainer: {
-    borderWidth: 2,
     borderColor: lightBlue,
+    borderWidth: 2,
     marginBottom: 40,
     paddingBottom: 10,
     width: screenWidth * 0.83,
     alignSelf: "center",
   },
   newPostText: {
-    fontSize: 35,
     color: lightBlue,
+    fontSize: 35,
     fontWeight: "bold",
     paddingHorizontal: 50,
     paddingVertical: 10,
-    textAlign: "center",
     justifyContent: "center",
   },
   newPostInsideText: {
-    fontSize: 16,
     color: text,
+    fontSize: 16,
     fontWeight: "regular",
     paddingHorizontal: 15,
     paddingVertical: 5,
-    textAlign: "flex-start",
     justifyContent: "center",
   },
   postAccountCta: {
-    fontSize: 16,
     color: background,
+    fontSize: 16,
     fontWeight: "600",
     paddingHorizontal: 70,
     paddingVertical: 10,
@@ -147,4 +144,5 @@ export const styles = StyleSheet.create({
   loginButton: {
     color: text,
   },
+  textBoxBig: { height: 110 },
 });

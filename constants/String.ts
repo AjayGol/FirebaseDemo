@@ -3,7 +3,10 @@ const emailValidation = (email: string) => {
   return !emailRegex.test(email);
 };
 
-const dateFormat = (date: string) => {
+const dateFormat = (date: number | string) => {
+  if (!date) {
+    return "";
+  }
   const dateConvert = new Date(date * 1000);
   const hours = dateConvert.getHours();
   const minutes = dateConvert.getMinutes();
