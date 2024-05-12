@@ -34,7 +34,11 @@ export default function LoginScreen() {
     try {
       const auth = getAuth(firebaseApp);
       await signInWithEmailAndPassword(auth, email, password);
-      navigation.navigate(screenNames.NewPost);
+
+      navigation.reset({
+        index: 0,
+        routes: [{ name: screenNames.NewPost }],
+      } as never);
     } catch (error) {
       Alert.alert("Invalid Credential");
       console.log(error);
@@ -42,7 +46,7 @@ export default function LoginScreen() {
   };
 
   const handleSignUp = () => {
-    navigation.navigate(screenNames.CreateAccount);
+    navigation.navigate(screenNames.CreateAccount as never);
   };
 
   const Divider = () => {

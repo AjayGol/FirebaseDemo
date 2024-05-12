@@ -2,13 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1dace1b5-c30d-4741-a3f1-3bed6e536a80" name="Changes" comment="EsLint">
-      <change afterPath="$PROJECT_DIR$/app/app.types.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/(tabs)/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(tabs)/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/create-account.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/create-account.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/new-post.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/new-post.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/styled.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/styled.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/constants/String.ts" beforeDir="false" afterPath="$PROJECT_DIR$/constants/String.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
