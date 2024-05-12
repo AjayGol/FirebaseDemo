@@ -10,7 +10,7 @@ import {
 } from "firebase/firestore";
 import firebaseApp from "../firebase";
 import { getAuth } from "firebase/auth";
-import { styles } from "./styled";
+import { styles } from "./styles";
 import { dateFormat } from "@/constants/String";
 import { ListDataProps } from "@/app/app.types";
 import { LinearGradient } from "expo-linear-gradient";

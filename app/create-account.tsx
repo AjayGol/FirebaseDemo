@@ -3,7 +3,7 @@ import { View, TextInput, Text, TouchableOpacity, Alert } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import firebaseApp from "../firebase";
-import { styles } from "./styled";
+import { styles } from "./styles";
 import { emailValidation } from "@/constants/String";
 import { LinearGradient } from "expo-linear-gradient";
 import { Colors } from "@/constants/Colors";
