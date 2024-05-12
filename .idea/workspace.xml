@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1dace1b5-c30d-4741-a3f1-3bed6e536a80" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/app/styled.ts" afterDir="false" />
+    <list default="true" id="1dace1b5-c30d-4741-a3f1-3bed6e536a80" name="Changes" comment="EsLint">
+      <change afterPath="$PROJECT_DIR$/constants/String.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/(tabs)/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(tabs)/index.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/create-account.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/create-account.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/login.tsx" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/app/new-post.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/new-post.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/constants/Colors.ts" beforeDir="false" afterPath="$PROJECT_DIR$/constants/Colors.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/styled.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/styled.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/firebase.js" beforeDir="false" afterPath="$PROJECT_DIR$/firebase.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,18 +38,15 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.standard": "true",
-    "node.js.selected.package.eslint": "",
-    "node.js.selected.package.standard": "",
-    "prettierjs.PrettierConfiguration.Package": "/Users/ajay/Documents/expo project/FirebaseDemo/node_modules/prettier",
-    "ts.external.directory.path": "/Users/ajay/Documents/expo project/FirebaseDemo/node_modules/typescript/lib"
-  }
-}]]></component>
+  <component name="PropertiesComponent">
+    <property name="dart.analysis.tool.window.visible" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/constants" />
+    <property name="prettierjs.PrettierConfiguration.Package" value="$PROJECT_DIR$/node_modules/prettier" />
+    <property name="ts.external.directory.path" value="$PROJECT_DIR$/node_modules/typescript/lib" />
+  </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/constants" />
       <recent name="$PROJECT_DIR$/components/navigation" />
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/app" />
@@ -68,6 +66,14 @@
       <workItem from="1715488344840" duration="2388000" />
       <workItem from="1715491090577" duration="1204000" />
     </task>
+    <task id="LOCAL-00001" summary="EsLint">
+      <created>1715498108132</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1715498108132</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -86,6 +92,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="EsLint" />
+    <option name="LAST_COMMIT_MESSAGE" value="EsLint" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

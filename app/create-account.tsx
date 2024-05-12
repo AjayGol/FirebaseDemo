@@ -5,6 +5,7 @@ import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import firebaseApp from "../firebase";
 import screenNames from "@/components/navigation/ScreenNames";
 import { styles } from "./styled";
+import { emailValidation } from "@/constants/String";
 
 export default function CreateAccount() {
   const navigation = useNavigation();
@@ -15,14 +16,15 @@ export default function CreateAccount() {
     createAccountText,
     createAccountCta,
     createAccountButton,
+    textInputCreate,
+    loginButton,
   } = styles;
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const onPressCreateAccount = async () => {
     try {
-      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      if (!emailRegex.test(email)) {
+      if (emailValidation(email)) {
         Alert.alert("Invalid Email", "Please enter a valid email address");
         return;
       }
@@ -33,10 +35,15 @@ export default function CreateAccount() {
 
       const auth = getAuth(firebaseApp);
       await createUserWithEmailAndPassword(auth, email, password);
-      navigation.navigate(screenNames.NewPost);
+      Alert.alert("Creat account successfully");
+      navigation.goBack();
     } catch (error) {
-      Alert.alert("Invalid Credential");
+      Alert.alert("User already exits");
     }
+  };
+
+  const onPressBack = () => {
+    navigation.goBack();
   };
 
   return (
@@ -46,7 +53,7 @@ export default function CreateAccount() {
       </View>
       <View style={styles.textInputMainView}>
         <TextInput
-          style={[commonTextInput, { marginBottom: 40 }]}
+          style={[commonTextInput, textInputCreate]}
           placeholder="Email"
           placeholderTextColor="gray"
           value={email}
@@ -79,6 +86,9 @@ export default function CreateAccount() {
         onPress={onPressCreateAccount}
       >
         <Text style={createAccountCta}>{"Create Account"}</Text>
+      </TouchableOpacity>
+      <TouchableOpacity onPress={onPressBack}>
+        <Text style={[createAccountCta, loginButton]}>{"Login"}</Text>
       </TouchableOpacity>
     </View>
   );

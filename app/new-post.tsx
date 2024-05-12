@@ -5,10 +5,13 @@ import {
   getFirestore,
   addDoc,
   onSnapshot,
+  query,
+  orderBy,
 } from "firebase/firestore";
 import firebaseApp from "../firebase";
 import { getAuth } from "firebase/auth";
 import { styles } from "./styled";
+import { dateFormat } from "@/constants/String";
 
 export default function NewPost() {
   const {
@@ -29,13 +32,16 @@ export default function NewPost() {
 
   useEffect(() => {
     const unsubscribe = onSnapshot(
-      collection(getFirestore(firebaseApp), "messages"),
+      query(
+        collection(getFirestore(firebaseApp), "messages"),
+        orderBy("createdAt", "asc"),
+      ),
       (snapshot) => {
         const messagesData = snapshot.docs.map((doc) => ({
           id: doc.id,
           ...doc.data(),
         }));
-        setMessages(messagesData);
+        setMessages(messagesData.reverse());
       },
     );
 
@@ -52,10 +58,6 @@ export default function NewPost() {
           email: user?.email,
         });
         setIsPostMessage("");
-        setMessages((prevMessages) => [
-          ...prevMessages,
-          { text: isPostMessage, createdAt: new Date(), email: user?.email },
-        ]);
       } else {
         alert("Please enter a message.");
       }
@@ -64,36 +66,17 @@ export default function NewPost() {
     }
   };
 
-  const formatDateTime = (dateObject) => {
-    const date = new Date(dateObject * 1000);
-    const hours = date.getHours();
-    const minutes = date.getMinutes();
-    const day = date.getDate();
-    const month = date.getMonth() + 1;
-    const year = date.getFullYear();
-
-    const timeComponent = `${hours % 12 === 0 ? 12 : hours % 12}:${
-      minutes < 10 ? "0" : ""
-    }${minutes}${hours < 12 ? "am" : "pm"}`;
-
-    const dateComponent = `${day < 10 ? "0" : ""}${day}/${
-      month < 10 ? "0" : ""
-    }${month}/${year}`;
-
-    return `${timeComponent}, ${dateComponent}`;
-  };
-
   return (
     <View style={mainContainer}>
       <View style={newPostContainer}>
         <Text style={newPostText}>{"Newest Post"}</Text>
         <View style={newPostInsideContainer}>
           <Text style={newPostInsideText}>Post: {messages[0]?.text}</Text>
-          <Text style={newPostInsideText}>Email: {user?.email}</Text>
+          <Text style={newPostInsideText}>Email: {messages[0]?.email}</Text>
           <Text style={newPostInsideText}>
             Time Posted:{" "}
             {messages[0]?.createdAt?.seconds
-              ? formatDateTime(messages[0]?.createdAt?.seconds)
+              ? dateFormat(messages[0]?.createdAt?.seconds)
               : ""}
           </Text>
         </View>

@@ -5,6 +5,7 @@ import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import firebaseApp from "../../firebase";
 import { styles } from "../styled";
 import screenNames from "@/components/navigation/ScreenNames";
+import { emailValidation } from "@/constants/String";
 
 export default function LoginScreen() {
   const navigation = useNavigation();
@@ -23,9 +24,11 @@ export default function LoginScreen() {
   const [password, setPassword] = useState("");
 
   const handleLogin = async () => {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) {
+    if (emailValidation(email)) {
       Alert.alert("Invalid Email", "Please enter a valid email address");
+      return;
+    } else if (password.length === 0) {
+      Alert.alert("Invalid Password", "Please enter a valid password");
       return;
     }
     try {

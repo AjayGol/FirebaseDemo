@@ -9,6 +9,7 @@ export const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     paddingHorizontal: 20,
+    backgroundColor: background,
   },
   commonTextInput: {
     height: 40,
@@ -141,5 +142,9 @@ export const styles = StyleSheet.create({
     backgroundColor: lightBlue,
     borderRadius: 8,
     marginTop: 5,
+  },
+  textInputCreate: { marginBottom: 40 },
+  loginButton: {
+    color: text,
   },
 });
