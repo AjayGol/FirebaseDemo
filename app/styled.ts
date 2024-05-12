@@ -52,6 +52,11 @@ export const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: "regular",
   },
+  textWhite: {
+    color: background,
+    fontSize: 16,
+    fontWeight: "regular",
+  },
   loginButtonContainer: {
     backgroundColor: lightBlue,
     borderRadius: 8,
@@ -145,4 +150,13 @@ export const styles = StyleSheet.create({
     color: text,
   },
   textBoxBig: { height: 110 },
+  imageContainer: { height: 100, width: 100, borderRadius: 10},
+  selectImage: {
+    position: "absolute",
+    right: 10,
+    bottom: 15,
+    backgroundColor: lightBlue,
+    padding: 5,
+    borderRadius: 10,
+  },
 });
