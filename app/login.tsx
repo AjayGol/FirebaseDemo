@@ -10,7 +10,8 @@ import {
 import { useNavigation } from "@react-navigation/native";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth"; // Correct import path
 import { screenWidth } from "@/constants/Common";
-import firebaseApp from "../firebase"; // Import your firebase configuration
+import firebaseApp from "../firebase";
+import screenNames from "@/components/navigation/ScreenNames"; // Import your firebase configuration
 
 export default function LoginScreen() {
   const navigation = useNavigation();
@@ -33,7 +34,7 @@ export default function LoginScreen() {
   };
 
   const handleSignUp = () => {
-    navigation.navigate("create-account");
+    navigation.navigate(screenNames.CreateAccount);
   };
 
   const Divider = () => {

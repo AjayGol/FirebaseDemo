@@ -10,7 +10,8 @@ import { screenHeight, screenWidth } from "@/constants/Common";
 import { useNavigation } from "@react-navigation/native";
 import { Alert } from "react-native";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth"; // Correct import path
-import firebaseApp from "../firebase"; // Import your firebase configuration
+import firebaseApp from "../firebase";
+import screenNames from "@/components/navigation/ScreenNames"; // Import your firebase configuration
 
 export default function CreateAccount() {
   const navigation = useNavigation();
@@ -26,7 +27,7 @@ export default function CreateAccount() {
       const auth = getAuth(firebaseApp);
       await createUserWithEmailAndPassword(auth, email, password);
       // await createUserWithEmailAndPassword(email, password);
-      navigation.navigate("new-post");
+      navigation.navigate(screenNames.NewPost);
     } catch (error) {
       Alert.alert("Error", error.message);
     }

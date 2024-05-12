@@ -6,11 +6,11 @@ import {
 import { useFonts } from "expo-font";
 import { Stack } from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
-import { useEffect } from "react";
 import "react-native-reanimated";
-
+import { useEffect } from "react";
 import { useColorScheme } from "@/hooks/useColorScheme";
 import { Colors } from "@/constants/Colors";
+import screenNames from "@/components/navigation/ScreenNames";
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
@@ -34,21 +34,23 @@ export default function RootLayout() {
   return (
     <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
       <Stack
-        initialRouteName="create-account"
         screenOptions={{
           tabBarActiveTintColor: Colors[colorScheme ?? "light"].tint,
           headerShown: false,
         }}
       >
-        <Stack.Screen name="login" options={{ headerShown: false }} />
         <Stack.Screen
-          name="create-account"
+          name={screenNames.Login}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name={screenNames.CreateAccount}
           options={{
             headerShown: false,
           }}
         />
         <Stack.Screen
-          name="new-post"
+          name={screenNames.NewPost}
           options={{
             headerShown: false,
           }}
