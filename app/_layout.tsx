@@ -49,16 +49,16 @@ export default function RootLayout() {
           name={screenNames.NewPost}
           options={{
             headerShown: false,
-              animation: 'none'
+            animation: "none",
           }}
         />
-          <Stack.Screen
-              name={screenNames.Login}
-              options={{
-                  headerShown: false,
-                  animation: 'none'
-              }}
-          />
+        <Stack.Screen
+          name={screenNames.Login}
+          options={{
+            headerShown: false,
+            animation: "none",
+          }}
+        />
       </Stack>
     </ThemeProvider>
   );

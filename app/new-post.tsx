@@ -17,7 +17,7 @@ import {
 } from "firebase/firestore";
 import firebaseApp from "../firebase";
 import * as ImagePicker from "expo-image-picker";
-import {getAuth, signOut} from "firebase/auth";
+import { getAuth, signOut } from "firebase/auth";
 import { styles } from "./styles";
 import { dateFormat } from "@/constants/String";
 import { ListDataProps } from "@/app/app.types";
@@ -26,7 +26,7 @@ import { Colors } from "@/constants/Colors";
 import { getStorage } from "@firebase/storage";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import {useNavigation} from "@react-navigation/native";
+import { useNavigation } from "@react-navigation/native";
 const { buttonGradient } = Colors.light;
 
 export default function NewPost() {
@@ -118,19 +118,18 @@ export default function NewPost() {
       setSelectedPhoto("");
     }
   };
-  console.log('auth', auth);
+  console.log("auth", auth);
 
   const logOutUser = async () => {
     try {
       await signOut(auth);
-      await AsyncStorage.removeItem('userToken');
+      await AsyncStorage.removeItem("userToken");
       navigation.reset({
         index: 0,
-        routes: [{ name: 'login-screen' }],
+        routes: [{ name: "login-screen" }],
       });
-    } catch (error) {
-    }
-  }
+    } catch (error) {}
+  };
 
   const uploadImage = async (imageUri: string) => {
     if (imageUri === "") {
@@ -223,7 +222,10 @@ export default function NewPost() {
           )}
         </LinearGradient>
       </TouchableOpacity>
-      <TouchableOpacity style={[postMessageButton,  {marginTop: 40}]} onPress={logOutUser}>
+      <TouchableOpacity
+        style={[postMessageButton, { marginTop: 40 }]}
+        onPress={logOutUser}
+      >
         <LinearGradient
           colors={buttonGradient}
           start={{ x: 0, y: 0 }}

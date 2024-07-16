@@ -7,7 +7,7 @@ import { emailValidation } from "@/constants/String";
 import { LinearGradient } from "expo-linear-gradient";
 import { Colors } from "@/constants/Colors";
 import firebaseApp from "@/firebase";
-import {styles} from "@/app/styles";
+import { styles } from "@/app/styles";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 const { buttonGradient } = Colors.light;
 
@@ -38,9 +38,13 @@ export default function LoginScreen() {
     }
     try {
       const auth = getAuth(firebaseApp);
-      const userCredential = await signInWithEmailAndPassword(auth, email, password);
-      console.log('userCredential.user.uid', userCredential.user.uid);
-      await AsyncStorage.setItem('userToken', userCredential.user.uid);
+      const userCredential = await signInWithEmailAndPassword(
+        auth,
+        email,
+        password,
+      );
+      console.log("userCredential.user.uid", userCredential.user.uid);
+      await AsyncStorage.setItem("userToken", userCredential.user.uid);
 
       navigation.reset({
         index: 0,
@@ -58,56 +62,56 @@ export default function LoginScreen() {
 
   const Divider = () => {
     return (
-        <View style={dividerContainer}>
-          <View style={line} />
-          <Text style={text}>or</Text>
-          <View style={line} />
-        </View>
+      <View style={dividerContainer}>
+        <View style={line} />
+        <Text style={text}>or</Text>
+        <View style={line} />
+      </View>
     );
   };
 
   return (
-      <View style={loginContainer}>
-        <TouchableOpacity style={signUpContainer} onPress={handleSignUp}>
-          <LinearGradient
-              colors={buttonGradient}
-              start={{ x: 0, y: 0 }}
-              end={{ x: 0, y: 1 }}
-              style={gradient}
-          >
-            <Text style={signUpText}>Sign up</Text>
-          </LinearGradient>
-        </TouchableOpacity>
-        {Divider()}
-        <View style={textInputMainView}>
-          <TextInput
-              style={commonTextInput}
-              placeholder="Email"
-              placeholderTextColor="gray"
-              value={email}
-              onChangeText={(text) => {
-                setEmail(text);
-              }}
-          />
-          <TextInput
-              style={commonTextInput}
-              placeholder="Password"
-              value={password}
-              placeholderTextColor="gray"
-              onChangeText={setPassword}
-              secureTextEntry
-          />
-        </View>
-        <TouchableOpacity style={loginButtonContainer} onPress={handleLogin}>
-          <LinearGradient
-              colors={buttonGradient}
-              start={{ x: 0, y: 0 }}
-              end={{ x: 0, y: 1 }}
-              style={gradient}
-          >
-            <Text style={signUpText}>Log In</Text>
-          </LinearGradient>
-        </TouchableOpacity>
+    <View style={loginContainer}>
+      <TouchableOpacity style={signUpContainer} onPress={handleSignUp}>
+        <LinearGradient
+          colors={buttonGradient}
+          start={{ x: 0, y: 0 }}
+          end={{ x: 0, y: 1 }}
+          style={gradient}
+        >
+          <Text style={signUpText}>Sign up</Text>
+        </LinearGradient>
+      </TouchableOpacity>
+      {Divider()}
+      <View style={textInputMainView}>
+        <TextInput
+          style={commonTextInput}
+          placeholder="Email"
+          placeholderTextColor="gray"
+          value={email}
+          onChangeText={(text) => {
+            setEmail(text);
+          }}
+        />
+        <TextInput
+          style={commonTextInput}
+          placeholder="Password"
+          value={password}
+          placeholderTextColor="gray"
+          onChangeText={setPassword}
+          secureTextEntry
+        />
       </View>
+      <TouchableOpacity style={loginButtonContainer} onPress={handleLogin}>
+        <LinearGradient
+          colors={buttonGradient}
+          start={{ x: 0, y: 0 }}
+          end={{ x: 0, y: 1 }}
+          style={gradient}
+        >
+          <Text style={signUpText}>Log In</Text>
+        </LinearGradient>
+      </TouchableOpacity>
+    </View>
   );
 }
