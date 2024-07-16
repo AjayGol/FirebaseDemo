@@ -1,7 +1,7 @@
 enum ScreenNames {
   Login = "login-screen",
   CreateAccount = "create-account",
-  NewPost = "new-post",
+  TabBar = "tab-bar",
 }
 
 export default ScreenNames;

@@ -29,7 +29,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useNavigation } from "@react-navigation/native";
 const { buttonGradient } = Colors.light;
 
-export default function NewPost() {
+export default function ProfileTab() {
   const {
     postAccountCta,
     textInputMainView,

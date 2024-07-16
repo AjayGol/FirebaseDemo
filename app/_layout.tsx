@@ -46,14 +46,14 @@ export default function RootLayout() {
           }}
         />
         <Stack.Screen
-          name={screenNames.NewPost}
+          name={screenNames.Login}
           options={{
             headerShown: false,
             animation: "none",
           }}
         />
         <Stack.Screen
-          name={screenNames.Login}
+          name={screenNames.TabBar}
           options={{
             headerShown: false,
             animation: "none",
