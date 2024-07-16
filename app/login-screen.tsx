@@ -48,7 +48,7 @@ export default function LoginScreen() {
 
       navigation.reset({
         index: 0,
-        routes: [{ name: screenNames.NewPost }],
+        routes: [{ name: screenNames.TabBar }],
       } as never);
     } catch (error) {
       Alert.alert("Invalid Credential");
