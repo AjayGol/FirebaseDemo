@@ -9,6 +9,7 @@ import { Colors } from "@/constants/Colors";
 import firebaseApp from "@/firebase";
 import { styles } from "@/app/styles";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { getUserDataByUserID } from "@/constants/firebaseFunction";
 const { buttonGradient } = Colors.light;
 
 export default function LoginScreen() {
@@ -43,6 +44,8 @@ export default function LoginScreen() {
         email,
         password,
       );
+      const userID = userCredential.user.uid;
+      await getUserDataByUserID(userID);
       // const accessToken = await userCredential.user.getIdToken();
       await AsyncStorage.setItem(
         "userToken",

@@ -165,43 +165,22 @@ export default function ProfileTab() {
 
   return (
     <View style={mainContainer}>
+      <View style={textInputMainView}>
+        <TouchableOpacity onPress={pickImage} style={selectImage}>
+          <Text style={textWhite}>{"Upload"}</Text>
+        </TouchableOpacity>
+      </View>
+
       <View style={newPostContainer}>
-        <Text style={newPostText}>{"Newest Post"}</Text>
+        <Text style={newPostText}>{"User Detail"}</Text>
         <View style={newPostInsideContainer}>
           <Text style={newPostInsideText} numberOfLines={4}>
-            Post: {messages[0]?.text ?? ""}
+            Name: {global.userData.name ?? ""}
           </Text>
           <Text style={newPostInsideText}>
-            Email: {messages[0]?.email ?? ""}
+            Email: {global.userData.email ?? ""}
           </Text>
-          <Text style={newPostInsideText}>
-            Time Posted: {dateFormat(messages[0]?.createdAt?.seconds ?? "")}
-          </Text>
-
-          {(messages[0]?.image && (
-            <View style={centerImage}>
-              <Image
-                source={{ uri: messages[0]?.image }}
-                style={imageContainer}
-              />
-            </View>
-          )) ||
-            null}
         </View>
-      </View>
-      <View style={textInputMainView}>
-        <TextInput
-          style={[commonTextInput, textBoxBig]}
-          placeholder="Enter Text Post Here"
-          placeholderTextColor="gray"
-          value={isPostMessage}
-          onChangeText={setIsPostMessage}
-          multiline={true}
-          numberOfLines={5}
-        />
-        <TouchableOpacity onPress={pickImage} style={selectImage}>
-          <Text style={textWhite}>{"Image"}</Text>
-        </TouchableOpacity>
       </View>
 
       {selectedPhoto !== "" ? (

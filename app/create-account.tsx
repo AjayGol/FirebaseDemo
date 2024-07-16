@@ -7,7 +7,8 @@ import { styles } from "./styles";
 import { emailValidation } from "@/constants/String";
 import { LinearGradient } from "expo-linear-gradient";
 import { Colors } from "@/constants/Colors";
-import {addDoc, collection, getFirestore} from "firebase/firestore";
+import { addDoc, collection, getFirestore } from "firebase/firestore";
+import {getUserDataByUserID} from "@/constants/firebaseFunction";
 const { buttonGradient } = Colors.light;
 
 export default function CreateAccount() {
@@ -30,12 +31,12 @@ export default function CreateAccount() {
 
   const onPressCreateAccount = async () => {
     try {
-      if (emailValidation(email)) {
-        Alert.alert("Invalid Email", "Please enter a valid email address");
-        return;
-      }
       if (userName === "") {
         Alert.alert("Please enter userName");
+        return;
+      }
+      if (emailValidation(email)) {
+        Alert.alert("Invalid Email", "Please enter a valid email address");
         return;
       }
       if (password === "") {
@@ -48,14 +49,23 @@ export default function CreateAccount() {
       }
 
       const auth = getAuth(firebaseApp);
-      await createUserWithEmailAndPassword(auth, email, password);
+      const userCredential = await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password,
+      );
+      const userID = userCredential.user.uid;
 
       const db = getFirestore(firebaseApp);
       await addDoc(collection(db, "users"), {
         createdAt: new Date(),
         email: email,
         name: userName,
+        userID: userID,
+        profilePic: "",
       });
+      await getUserDataByUserID(userID);
+
       Alert.alert("Creat account successfully");
       navigation.goBack();
     } catch (error) {
