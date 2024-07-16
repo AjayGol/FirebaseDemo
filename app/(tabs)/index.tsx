@@ -1,5 +1,4 @@
 import { useEffect } from "react";
-import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useNavigation } from "@react-navigation/native";
 import { ActivityIndicator, View } from "react-native";
 import screenNames from "@/components/navigation/ScreenNames";
