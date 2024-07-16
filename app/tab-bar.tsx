@@ -7,6 +7,8 @@ import { MaterialIcons } from "@expo/vector-icons";
 import { AntDesign } from "@expo/vector-icons";
 import { Entypo } from "@expo/vector-icons";
 import UserSignupTab from "@/app/user-signup-list";
+import ContactFormTab from "@/app/contact-form-tab";
+import DashBoardTab from "@/app/dashboard-tab";
 
 export default function TabBar() {
   const Tab = createBottomTabNavigator();
@@ -41,12 +43,12 @@ export default function TabBar() {
       />
       <Tab.Screen
         name="Tab2"
-        component={Tab1Screen}
+        component={DashBoardTab}
         options={{ tabBarLabel: "Dashboard" }}
       />
       <Tab.Screen
         name="Tab3"
-        component={Tab1Screen}
+        component={ContactFormTab}
         options={{ tabBarLabel: "Contact Form" }}
       />
       <Tab.Screen
