@@ -6,6 +6,7 @@ import { Ionicons } from "@expo/vector-icons"; // You can use any icon library
 import { MaterialIcons } from "@expo/vector-icons";
 import { AntDesign } from "@expo/vector-icons";
 import { Entypo } from "@expo/vector-icons";
+import UserSignupTab from "@/app/user-signup-list";
 
 export default function TabBar() {
   const Tab = createBottomTabNavigator();
@@ -55,7 +56,7 @@ export default function TabBar() {
       />
       <Tab.Screen
         name="Tab5"
-        component={Tab1Screen}
+        component={UserSignupTab}
         options={{ tabBarLabel: "User SignUp" }}
       />
     </Tab.Navigator>

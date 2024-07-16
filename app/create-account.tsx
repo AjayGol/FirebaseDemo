@@ -7,6 +7,7 @@ import { styles } from "./styles";
 import { emailValidation } from "@/constants/String";
 import { LinearGradient } from "expo-linear-gradient";
 import { Colors } from "@/constants/Colors";
+import {addDoc, collection, getFirestore} from "firebase/firestore";
 const { buttonGradient } = Colors.light;
 
 export default function CreateAccount() {
@@ -22,6 +23,7 @@ export default function CreateAccount() {
     loginButton,
     gradient,
   } = styles;
+  const [userName, setUserName] = useState<string>("");
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [confirmPassword, setConfirmPassword] = useState<string>("");
@@ -30,6 +32,10 @@ export default function CreateAccount() {
     try {
       if (emailValidation(email)) {
         Alert.alert("Invalid Email", "Please enter a valid email address");
+        return;
+      }
+      if (userName === "") {
+        Alert.alert("Please enter userName");
         return;
       }
       if (password === "") {
@@ -43,6 +49,13 @@ export default function CreateAccount() {
 
       const auth = getAuth(firebaseApp);
       await createUserWithEmailAndPassword(auth, email, password);
+
+      const db = getFirestore(firebaseApp);
+      await addDoc(collection(db, "users"), {
+        createdAt: new Date(),
+        email: email,
+        name: userName,
+      });
       Alert.alert("Creat account successfully");
       navigation.goBack();
     } catch (error) {
@@ -61,6 +74,13 @@ export default function CreateAccount() {
         <Text style={createAccountText}>{"Create an account"}</Text>
       </View>
       <View style={styles.textInputMainView}>
+        <TextInput
+          style={[commonTextInput, textInputCreate]}
+          placeholder="Name"
+          placeholderTextColor="gray"
+          value={userName}
+          onChangeText={setUserName}
+        />
         <TextInput
           style={[commonTextInput, textInputCreate]}
           placeholder="Email"
