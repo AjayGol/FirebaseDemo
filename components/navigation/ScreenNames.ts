@@ -1,5 +1,5 @@
 enum ScreenNames {
-  Login = "login",
+  Login = "login-screen",
   CreateAccount = "create-account",
   NewPost = "new-post",
 }

@@ -1,14 +1,13 @@
 import { initializeApp } from "firebase/app";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDkKgHvT2g33gSvxWzlODf0ovX1KerwIhE",
-  authDomain: "project-id.firebaseapp.com",
-  databaseURL: "https://project-id.firebaseio.com",
-  projectId: "fir-demo-1cc10",
-  storageBucket: "fir-demo-1cc10.appspot.com",
-  messagingSenderId: "sender-id",
-  appId: "1:650338910594:ios:7d30d94f73b07551060f9b",
-  measurementId: "G-measurement-id",
+  apiKey: "AIzaSyDd5-zBMiH38Fu1kdmueFIPD_MBGaKdBjU",
+  authDomain: "fir-demo-cc4ee.firebaseapp.com",
+  projectId: "fir-demo-cc4ee",
+  storageBucket: "fir-demo-cc4ee.appspot.com",
+  messagingSenderId: "590133831713",
+  appId: "1:590133831713:web:8f8916e5131b66420b9b60",
+  measurementId: "G-3F8FDW5HEH"
 };
 
 const firebaseApp = initializeApp(firebaseConfig);
