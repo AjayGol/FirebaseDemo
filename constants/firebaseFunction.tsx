@@ -1,10 +1,10 @@
-// firestoreUtils.js
 import {
   collection,
   query,
   where,
   getDocs,
   getFirestore,
+  updateDoc,
 } from "firebase/firestore";
 import firebaseApp from "@/firebase";
 
@@ -39,4 +39,42 @@ const getUserDataByUserID = async (userID) => {
   }
 };
 
-export { getUserDataByUserID };
+const updateUserDataByUserID = async (userID, newUserData) => {
+  try {
+    console.log(`Updating data for userID: ${userID}`);
+    console.log(`Updating data for userID: ${JSON.stringify(newUserData)}`);
+
+    const db = getFirestore(firebaseApp);
+    // Reference to the users collection
+    const usersCollection = collection(db, "users");
+
+    // Query to find the user with the specific userID
+    const q = query(usersCollection, where("userID", "==", userID));
+
+    // Execute the query
+    const querySnapshot = await getDocs(q);
+
+    // Check if a document was found
+    if (!querySnapshot.empty) {
+      // Get the document reference of the first document (assuming userID is unique)
+      let userData = querySnapshot.docs[0].data();
+      userData = { ...userData, ...newUserData };
+
+      const userDocRef = querySnapshot.docs[0].ref;
+
+      // Update the document with new data
+      await updateDoc(userDocRef, userData);
+      global.userData = userData;
+      console.log("User data updated successfully.");
+      return true;
+    } else {
+      console.log("No user found with the specified userID.");
+      return false;
+    }
+  } catch (error) {
+    console.error("Error updating user data:", error);
+    throw error;
+  }
+};
+
+export { getUserDataByUserID, updateUserDataByUserID };

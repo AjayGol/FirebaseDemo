@@ -2,9 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1dace1b5-c30d-4741-a3f1-3bed6e536a80" name="Changes" comment="Tab bar manage">
+      <change afterPath="$PROJECT_DIR$/.yarn/install-state.gz" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/(tabs)/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(tabs)/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/login-screen.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/login-screen.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/profile-tab.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/profile-tab.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/styles.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/styles.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/user-signup-list.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/user-signup-list.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/constants/firebaseFunction.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/constants/firebaseFunction.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -98,7 +101,7 @@
       <workItem from="1715488344840" duration="2388000" />
       <workItem from="1715491090577" duration="1204000" />
       <workItem from="1715526523369" duration="3361000" />
-      <workItem from="1721103830308" duration="7175000" />
+      <workItem from="1721103830308" duration="16268000" />
     </task>
     <task id="LOCAL-00001" summary="EsLint">
       <created>1715498108132</created>
