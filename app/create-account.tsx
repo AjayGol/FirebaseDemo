@@ -8,7 +8,7 @@ import { emailValidation } from "@/constants/String";
 import { LinearGradient } from "expo-linear-gradient";
 import { Colors } from "@/constants/Colors";
 import { addDoc, collection, getFirestore } from "firebase/firestore";
-import {getUserDataByUserID} from "@/constants/firebaseFunction";
+import {getUserDataByUserID} from "@/constants/FirebaseFunction";
 const { buttonGradient } = Colors.light;
 
 export default function CreateAccount() {

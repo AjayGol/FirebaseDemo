@@ -5,16 +5,24 @@ import { ActivityIndicator, View } from "react-native";
 import screenNames from "@/components/navigation/ScreenNames";
 import firebaseApp from "@/firebase";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
-import { getUserDataByUserID } from "@/constants/firebaseFunction";
+import { getUserDataByUserID } from "@/constants/FirebaseFunction";
+import { useSQLiteContext } from "expo-sqlite";
+
+interface Todo {
+  value: string;
+  intValue: number;
+}
 
 export default function Page() {
   const navigation = useNavigation();
+  const db = useSQLiteContext();
 
   useEffect(() => {
     const checkLoginState = async () => {
       try {
-        const token = await AsyncStorage.getItem("userToken");
-        if (!token) {
+        const result = await db.getAllAsync<Todo>("SELECT * FROM todos");
+
+        if (!result.length) {
           navigation.reset({
             index: 0,
             routes: [{ name: screenNames.Login }],
@@ -22,9 +30,8 @@ export default function Page() {
         } else {
           const auth = getAuth(firebaseApp);
           try {
-            const storedToken = await AsyncStorage.getItem("userToken");
-            if (typeof storedToken === "string") {
-              const userData = JSON.parse(storedToken);
+            if (result.length > 0) {
+              const userData = result[0];
               const userCredential = await signInWithEmailAndPassword(
                 auth,
                 userData.email,
@@ -47,38 +54,8 @@ export default function Page() {
         console.error("Failed to fetch the token from storage", error);
       }
     };
-
     checkLoginState();
   }, []);
-
-  // const getUserDataByUserID = async (userID) => {
-  //   try {
-  //     console.log(userID)
-  //     // Reference to the users collection
-  //     const db = getFirestore(firebaseApp);
-  //     const usersCollection = collection(db, "users");
-  //
-  //     // Query to find the user with the specific userID
-  //     const q = query(usersCollection, where("userID", "==", userID));
-  //
-  //     // Execute the query
-  //     const querySnapshot = await getDocs(q);
-  //
-  //     // Check if a document was found
-  //     if (!querySnapshot.empty) {
-  //       // Extract user data from the first document (assuming userID is unique)
-  //       const userData = querySnapshot.docs[0].data();
-  //       console.log("User data:", userData);
-  //       return userData;
-  //     } else {
-  //       console.log("No user found with the specified userID.");
-  //       return null;
-  //     }
-  //   } catch (error) {
-  //     console.error("Error getting user data:", error);
-  //     throw error;
-  //   }
-  // };
 
   return (
     <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>

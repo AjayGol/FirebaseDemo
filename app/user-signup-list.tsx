@@ -1,25 +1,18 @@
 import React, { useState, useEffect } from "react";
 import { View, Text, FlatList, StyleSheet, Image } from "react-native";
-import { collection, getFirestore, getDocs } from "firebase/firestore";
 import { Colors } from "@/constants/Colors";
+import { getAllUser } from "@/constants/FirebaseFunction";
 
 export default function UserSignupTab() {
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
     const fetchUsers = async () => {
-      const db = getFirestore();
-      const usersCollection = collection(db, "users");
-      const querySnapshot = await getDocs(usersCollection);
-      const userData = querySnapshot.docs.map((doc) => ({
-        id: doc.id,
-        ...doc.data(),
-      }));
-
-      setUsers(userData);
+      const userList = await getAllUser();
+      setUsers(userList);
     };
 
-    fetchUsers();
+    fetchUsers().then((r) => console.log("call fetch user"));
   }, []);
 
   const renderUserItem = ({ item }) => (
@@ -41,7 +34,6 @@ export default function UserSignupTab() {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>User Signup List</Text>
       <FlatList
         data={users}
         keyExtractor={(item) => item.id}

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import {
   View,
   Text,
@@ -6,25 +6,17 @@ import {
   Image,
   ActivityIndicator,
 } from "react-native";
-import {
-  collection,
-  getFirestore,
-  onSnapshot,
-  query,
-  orderBy,
-} from "firebase/firestore";
 import firebaseApp from "../firebase";
 import * as ImagePicker from "expo-image-picker";
 import { getAuth, signOut } from "firebase/auth";
 import { styles } from "./styles";
-import { ListDataProps } from "@/app/app.types";
 import { LinearGradient } from "expo-linear-gradient";
 import { Colors } from "@/constants/Colors";
 import { getStorage } from "@firebase/storage";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
-import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useNavigation } from "@react-navigation/native";
-import { updateUserDataByUserID } from "@/constants/firebaseFunction";
+import { updateUserDataByUserID } from "@/constants/FirebaseFunction";
+import * as SQLite from "expo-sqlite";
 const { buttonGradient } = Colors.light;
 
 export default function ProfileTab() {
@@ -77,7 +69,7 @@ export default function ProfileTab() {
   const logOutUser = async () => {
     try {
       await signOut(auth);
-      await AsyncStorage.removeItem("userToken");
+      await deleteTodoById();
       navigation.reset({
         index: 0,
         routes: [{ name: "login-screen" }],
@@ -118,6 +110,17 @@ export default function ProfileTab() {
         console.error("Error uploading file:", error);
         return "";
       });
+  };
+
+  const deleteTodoById = async () => {
+    const db = await SQLite.openDatabaseAsync("test.db");
+    try {
+      await db.runAsync("DELETE FROM todos WHERE id = $id", {
+        $id: 1,
+      });
+    } catch (error) {
+      console.error(`Error deleting todo with id ${1}:`, error);
+    }
   };
 
   return (

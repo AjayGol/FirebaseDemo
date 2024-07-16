@@ -8,8 +8,8 @@ import { LinearGradient } from "expo-linear-gradient";
 import { Colors } from "@/constants/Colors";
 import firebaseApp from "@/firebase";
 import { styles } from "@/app/styles";
-import AsyncStorage from "@react-native-async-storage/async-storage";
-import { getUserDataByUserID } from "@/constants/firebaseFunction";
+import { getUserDataByUserID } from "@/constants/FirebaseFunction";
+import * as SQLite from "expo-sqlite";
 const { buttonGradient } = Colors.light;
 
 export default function LoginScreen() {
@@ -47,9 +47,11 @@ export default function LoginScreen() {
       const userID = userCredential.user.uid;
       await getUserDataByUserID(userID);
       // const accessToken = await userCredential.user.getIdToken();
-      await AsyncStorage.setItem(
-        "userToken",
-        JSON.stringify({ email: email, password: password }),
+      const db = await SQLite.openDatabaseAsync("test.db");
+      await db.runAsync(
+        "INSERT INTO todos (email, password) VALUES (?, ?)",
+        email,
+        password,
       );
 
       navigation.reset({

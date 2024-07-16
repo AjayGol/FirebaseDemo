@@ -1653,6 +1653,19 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@expo/websql@npm:^1.0.1":
+  version: 1.0.1
+  resolution: "@expo/websql@npm:1.0.1"
+  dependencies:
+    argsarray: ^0.0.1
+    immediate: ^3.2.2
+    noop-fn: ^1.0.0
+    pouchdb-collections: ^1.0.1
+    tiny-queue: ^0.2.1
+  checksum: 9458137b3c59774ca8bf18e2289ee2fd15c710a8017c84be49f78d9b988d6234b02388de2786b44ed22e906e006c3c131413e90e3b703b00886269ddea76cc5d
+  languageName: node
+  linkType: hard
+
 "@expo/xcpretty@npm:^4.3.0":
   version: 4.3.1
   resolution: "@expo/xcpretty@npm:4.3.1"
@@ -4320,6 +4333,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"argsarray@npm:^0.0.1":
+  version: 0.0.1
+  resolution: "argsarray@npm:0.0.1"
+  checksum: 0042accbc0a2d855ad5af56df49291e0e4cae7456f42d486f4cb05518c8e1939bf8aca7dece89d846349d615793fae2cea8ebb20a8207c0f22dafb88b1536819
+  languageName: node
+  linkType: hard
+
 "array-buffer-byte-length@npm:^1.0.1":
   version: 1.0.1
   resolution: "array-buffer-byte-length@npm:1.0.1"
@@ -6605,6 +6625,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"expo-sqlite@npm:~14.0.4":
+  version: 14.0.4
+  resolution: "expo-sqlite@npm:14.0.4"
+  dependencies:
+    "@expo/websql": ^1.0.1
+  peerDependencies:
+    expo: "*"
+  checksum: 10f3daabdb5b09d51811f1a3854b7242dc50d8a8f7172869d0b1041da9b531fb000003de26c312d4d1970b55ccbb3f41f44d108486c9c32d11886ffd801fcf11
+  languageName: node
+  linkType: hard
+
 "expo-status-bar@npm:~1.12.1":
   version: 1.12.1
   resolution: "expo-status-bar@npm:1.12.1"
@@ -6948,6 +6979,7 @@ __metadata:
     expo-linking: ~6.3.1
     expo-router: ~3.5.11
     expo-splash-screen: ~0.27.4
+    expo-sqlite: ~14.0.4
     expo-status-bar: ~1.12.1
     expo-system-ui: ~3.0.4
     expo-web-browser: ~13.0.3
@@ -7687,6 +7719,13 @@ __metadata:
   bin:
     image-size: bin/image-size.js
   checksum: 23b3a515dded89e7f967d52b885b430d6a5a903da954fce703130bfb6069d738d80e6588efd29acfaf5b6933424a56535aa7bf06867e4ebd0250c2ee51f19a4a
+  languageName: node
+  linkType: hard
+
+"immediate@npm:^3.2.2":
+  version: 3.3.0
+  resolution: "immediate@npm:3.3.0"
+  checksum: 634b4305101e2452eba6c07d485bf3e415995e533c94b9c3ffbc37026fa1be34def6e4f2276b0dc2162a3f91628564a4bfb26280278b89d3ee54624e854d2f5f
   languageName: node
   linkType: hard
 
@@ -10194,6 +10233,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"noop-fn@npm:^1.0.0":
+  version: 1.0.0
+  resolution: "noop-fn@npm:1.0.0"
+  checksum: e271f0590c06283d6216e268507fdab066d52164d7281cef1b99a2f40442c85297341c0e37a8fcbc9da95ea6cead7a87a69937c71a80fb3630b909d08b4e8c19
+  languageName: node
+  linkType: hard
+
 "nopt@npm:^7.0.0":
   version: 7.2.1
   resolution: "nopt@npm:7.2.1"
@@ -10794,6 +10840,13 @@ __metadata:
     picocolors: ^1.0.1
     source-map-js: ^1.2.0
   checksum: 14b130c90f165961772bdaf99c67f907f3d16494adf0868e57ef68baa67e0d1f6762db9d41ab0f4d09bab6fb7888588dba3596afd1a235fd5c2d43fba7006ac6
+  languageName: node
+  linkType: hard
+
+"pouchdb-collections@npm:^1.0.1":
+  version: 1.0.1
+  resolution: "pouchdb-collections@npm:1.0.1"
+  checksum: 5ac0c3f678406c143d99f5706123ab7d65bfd60a481a7eae2487ad355f5d3c926af0f0acfa9e47ff3e9d2aa0a782cca4431a37ba77d1a02cfd380c5cf5d6aef8
   languageName: node
   linkType: hard
 
@@ -12727,6 +12780,13 @@ __metadata:
   version: 2.3.8
   resolution: "through@npm:2.3.8"
   checksum: a38c3e059853c494af95d50c072b83f8b676a9ba2818dcc5b108ef252230735c54e0185437618596c790bbba8fcdaef5b290405981ffa09dce67b1f1bf190cbd
+  languageName: node
+  linkType: hard
+
+"tiny-queue@npm:^0.2.1":
+  version: 0.2.1
+  resolution: "tiny-queue@npm:0.2.1"
+  checksum: 9fb00beb47da966cc9296af5049077a656f6111ffb5a20b38a068659b30d8459f8f80b7bcf938e15547c321ecb7da8d001f38c2c847c0492633ae3b69550a4df
   languageName: node
   linkType: hard
 

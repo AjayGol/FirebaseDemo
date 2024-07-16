@@ -1,5 +1,5 @@
 import React from "react";
-import { View } from "react-native";
+import { Text, View } from "react-native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import ProfileTab from "@/app/profile-tab";
 import { Ionicons } from "@expo/vector-icons"; // You can use any icon library
@@ -17,18 +17,18 @@ export default function TabBar() {
     <Tab.Navigator
       screenOptions={({ route }) => ({
         tabBarIcon: ({ color, size }) => {
-          if (route.name === "Tab1") {
+          if (route.name === "Home") {
             // You can return any component that you like here!
             return <Ionicons name={"home"} size={size} color={color} />;
-          } else if (route.name === "Tab2") {
+          } else if (route.name === "Dashboard") {
             return (
               <MaterialIcons name={"dashboard"} size={size} color={color} />
             );
-          } else if (route.name === "Tab3") {
+          } else if (route.name === "Contact Form") {
             return <AntDesign name={"profile"} size={size} color={color} />;
-          } else if (route.name === "Tab4") {
+          } else if (route.name === "Profile") {
             return <AntDesign name={"contacts"} size={size} color={color} />;
-          } else if (route.name === "Tab5") {
+          } else if (route.name === "User SignUp") {
             return <Entypo name={"users"} size={size} color={color} />;
           }
           return null;
@@ -36,35 +36,19 @@ export default function TabBar() {
         tabBarShowLabel: true, // This will hide the labels
       })}
     >
-      <Tab.Screen
-        name="Tab1"
-        component={Tab1Screen}
-        options={{ tabBarLabel: "Home" }}
-      />
-      <Tab.Screen
-        name="Tab2"
-        component={DashBoardTab}
-        options={{ tabBarLabel: "Dashboard" }}
-      />
-      <Tab.Screen
-        name="Tab3"
-        component={ContactFormTab}
-        options={{ tabBarLabel: "Contact Form" }}
-      />
-      <Tab.Screen
-        name="Tab4"
-        component={ProfileTab}
-        options={{ tabBarLabel: "Profile" }}
-      />
-      <Tab.Screen
-        name="Tab5"
-        component={UserSignupTab}
-        options={{ tabBarLabel: "User SignUp" }}
-      />
+      <Tab.Screen name="Home" component={Tab1Screen} />
+      <Tab.Screen name="Dashboard" component={DashBoardTab} />
+      <Tab.Screen name="Contact Form" component={ContactFormTab} />
+      <Tab.Screen name="Profile" component={ProfileTab} />
+      <Tab.Screen name="User SignUp" component={UserSignupTab} />
     </Tab.Navigator>
   );
 }
 
 function Tab1Screen() {
-  return <View style={{ flex: 1, backgroundColor: "red" }} />;
+  return (
+    <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
+      <Text>{`Welcome ${global.userData?.name}`}</Text>
+    </View>
+  );
 }
