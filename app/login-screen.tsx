@@ -43,8 +43,11 @@ export default function LoginScreen() {
         email,
         password,
       );
-      console.log("userCredential.user.uid", userCredential.user.uid);
-      await AsyncStorage.setItem("userToken", userCredential.user.uid);
+      // const accessToken = await userCredential.user.getIdToken();
+      await AsyncStorage.setItem(
+        "userToken",
+        JSON.stringify({ email: email, password: password }),
+      );
 
       navigation.reset({
         index: 0,
