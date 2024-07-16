@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import {
   View,
-  TextInput,
   Text,
   TouchableOpacity,
   Image,
@@ -10,7 +9,6 @@ import {
 import {
   collection,
   getFirestore,
-  addDoc,
   onSnapshot,
   query,
   orderBy,
@@ -19,7 +17,6 @@ import firebaseApp from "../firebase";
 import * as ImagePicker from "expo-image-picker";
 import { getAuth, signOut } from "firebase/auth";
 import { styles } from "./styles";
-import { dateFormat } from "@/constants/String";
 import { ListDataProps } from "@/app/app.types";
 import { LinearGradient } from "expo-linear-gradient";
 import { Colors } from "@/constants/Colors";
@@ -27,53 +24,27 @@ import { getStorage } from "@firebase/storage";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useNavigation } from "@react-navigation/native";
+import { updateUserDataByUserID } from "@/constants/firebaseFunction";
 const { buttonGradient } = Colors.light;
 
 export default function ProfileTab() {
   const {
     postAccountCta,
-    textInputMainView,
     newPostInsideText,
     newPostInsideContainer,
     newPostText,
     newPostContainer,
-    commonTextInput,
     mainContainer,
     postMessageButton,
-    textBoxBig,
     gradient,
     imageContainer,
-    selectImage,
-    textWhite,
-    centerImage,
     postButton,
   } = styles;
-  const [messages, setMessages] = useState<ListDataProps[]>([]);
-  const [isPostMessage, setIsPostMessage] = useState<string>("");
   const [selectedPhoto, setSelectedPhoto] = useState<string>("");
   const [loaderShow, setLoaderShow] = useState<boolean>(false);
   const navigation = useNavigation();
 
   const auth = getAuth(firebaseApp);
-  const user = auth.currentUser;
-
-  useEffect(() => {
-    const unsubscribe = onSnapshot(
-      query(
-        collection(getFirestore(firebaseApp), "messages"),
-        orderBy("createdAt", "asc"),
-      ),
-      (snapshot) => {
-        const messagesData = snapshot.docs.map((doc) => ({
-          id: doc.id,
-          ...doc.data(),
-        })) as [ListDataProps];
-        setMessages(messagesData.reverse());
-      },
-    );
-
-    return () => unsubscribe();
-  }, []);
 
   const pickImage = async (index) => {
     // No permissions request is necessary for launching the image library
@@ -93,32 +64,15 @@ export default function ProfileTab() {
   const handlePostMessage = async () => {
     if (loaderShow) {
       return;
-    } else if (!isPostMessage.trim()) {
-      alert("Please enter a message.");
-      return;
     }
 
-    setLoaderShow(true);
     const imageUpload = await uploadImage(selectedPhoto);
-    try {
-      const db = getFirestore(firebaseApp);
-      await addDoc(collection(db, "messages"), {
-        text: isPostMessage,
-        createdAt: new Date(),
-        email: user?.email,
-        image: imageUpload || "",
+    if (imageUpload && imageUpload !== "") {
+      await updateUserDataByUserID(global?.userData?.userID, {
+        profile: imageUpload,
       });
-      setIsPostMessage("");
-      setSelectedPhoto("");
-      setLoaderShow(false);
-    } catch (error) {
-      alert("An error occurred while posting the message");
-      console.log(error);
-      setLoaderShow(false);
-      setSelectedPhoto("");
     }
   };
-  console.log("auth", auth);
 
   const logOutUser = async () => {
     try {
@@ -135,6 +89,7 @@ export default function ProfileTab() {
     if (imageUri === "") {
       return "";
     }
+    setLoaderShow(true);
     const firebaseStorage = getStorage(firebaseApp);
     const response = await fetch(imageUri);
     const blob = await response.blob();
@@ -153,11 +108,13 @@ export default function ProfileTab() {
       })
       .then((downloadURL) => {
         // Use the download URL
+        setLoaderShow(false);
         console.log("File uploaded successfully. Download URL:", downloadURL);
         return downloadURL;
       })
       .catch((error) => {
         // Handle any errors
+        setLoaderShow(false);
         console.error("Error uploading file:", error);
         return "";
       });
@@ -165,9 +122,32 @@ export default function ProfileTab() {
 
   return (
     <View style={mainContainer}>
-      <View style={textInputMainView}>
-        <TouchableOpacity onPress={pickImage} style={selectImage}>
-          <Text style={textWhite}>{"Upload"}</Text>
+      <View
+        style={{
+          alignItems: "center",
+          justifyContent: "center",
+          margin: 50,
+        }}
+      >
+        {selectedPhoto !== "" || global.userData?.profile ? (
+          <Image
+            source={{
+              uri:
+                selectedPhoto !== "" ? selectedPhoto : global.userData?.profile,
+            }}
+            style={imageContainer}
+          />
+        ) : null}
+        <TouchableOpacity
+          onPress={pickImage}
+          style={{
+            backgroundColor: "#4bc7f3",
+            padding: 5,
+            borderRadius: 10,
+            marginTop: 10,
+          }}
+        >
+          <Text>{"Upload Profile"}</Text>
         </TouchableOpacity>
       </View>
 
@@ -183,41 +163,35 @@ export default function ProfileTab() {
         </View>
       </View>
 
-      {selectedPhoto !== "" ? (
-        <Image source={{ uri: selectedPhoto }} style={imageContainer} />
-      ) : null}
-
-      <TouchableOpacity style={postMessageButton} onPress={handlePostMessage}>
-        <LinearGradient
-          colors={buttonGradient}
-          start={{ x: 0, y: 0 }}
-          end={{ x: 0, y: 1 }}
-          style={[gradient, postButton]}
+      <View style={{ flexDirection: "row" }}>
+        <TouchableOpacity style={postMessageButton} onPress={handlePostMessage}>
+          <LinearGradient
+            colors={buttonGradient}
+            start={{ x: 0, y: 0 }}
+            end={{ x: 0, y: 1 }}
+            style={[gradient, postButton]}
+          >
+            {loaderShow ? (
+              <ActivityIndicator />
+            ) : (
+              <Text style={postAccountCta}>Save</Text>
+            )}
+          </LinearGradient>
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={[postMessageButton, { marginLeft: 10 }]}
+          onPress={logOutUser}
         >
-          {loaderShow ? (
-            <ActivityIndicator />
-          ) : (
-            <Text style={postAccountCta}>Post</Text>
-          )}
-        </LinearGradient>
-      </TouchableOpacity>
-      <TouchableOpacity
-        style={[postMessageButton, { marginTop: 40 }]}
-        onPress={logOutUser}
-      >
-        <LinearGradient
-          colors={buttonGradient}
-          start={{ x: 0, y: 0 }}
-          end={{ x: 0, y: 1 }}
-          style={[gradient, postButton]}
-        >
-          {loaderShow ? (
-            <ActivityIndicator />
-          ) : (
+          <LinearGradient
+            colors={buttonGradient}
+            start={{ x: 0, y: 0 }}
+            end={{ x: 0, y: 1 }}
+            style={[gradient, postButton]}
+          >
             <Text style={postAccountCta}>Log Out</Text>
-          )}
-        </LinearGradient>
-      </TouchableOpacity>
+          </LinearGradient>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 }

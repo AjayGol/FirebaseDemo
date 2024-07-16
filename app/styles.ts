@@ -108,6 +108,7 @@ export const styles = StyleSheet.create({
     justifyContent: "center",
   },
   mainContainer: {
+    flex: 1,
     justifyContent: "center",
     alignItems: "center",
     paddingHorizontal: 10,
