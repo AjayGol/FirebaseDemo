@@ -16,8 +16,10 @@ export default function DashBoardTab() {
         backgroundGradientFrom: Colors.light.background,
         backgroundGradientTo: Colors.light.background,
         decimalPlaces: 0,
-        color: (opacity = 1) => `rgba(255, 165, 38, ${opacity})`, // Orange color
+        color: (opacity = 1) => `rgba(38, 188, 242, ${opacity})`,
         labelColor: (opacity = 1) => `rgba(0, 0, 0, ${opacity})`,
+        barPercentage: 1,
+        useShadowColorFromDataset: false,
         style: {
             borderRadius: 16,
 
@@ -40,7 +42,6 @@ export default function DashBoardTab() {
                     };
                 });
 
-                // Process userData to count sign-ups by month
                 const dataByMonth = {};
                 userData.forEach((user) => {
                     const signUpMonth = getMonthYearString(user.createdAt);
@@ -60,10 +61,9 @@ export default function DashBoardTab() {
                     labels: sortedMonths,
                     data
                 });
-
                 setLoading(false);
             } catch (error) {
-                console.log('error', error);
+                console.log(error);
                 setLoading(false);
             }
         };
@@ -93,24 +93,30 @@ export default function DashBoardTab() {
         <View style={styles.container}>
             {loading ? (
                 <ActivityIndicator />
-            ) : (
-                <View style={styles.chartContainer}>
-                    <Text style={styles.titleInside}>Performance Matrix</Text>
-                    <BarChart
-                        data={{
-                            labels: chartData.labels,
-                            datasets: [{
-                                data: chartData.data,
-                            }],
-                        }}
-                        width={Dimensions.get("window").width - 40}
-                        height={220}
-                        withVerticalLines={true}
-                        chartConfig={chartConfig}
-                        fromZero={true}
-                        style={styles.chartStyle}
-                    />
-                </View>
+            ) : (chartData.labels.length > 0 ? (
+                       <>
+                           <Text style={styles.title}>User Sign-Ups By Month</Text>
+                           <View style={styles.chartContainer}>
+                               <Text style={styles.titleInside}>Performance Matrix</Text>
+                               <BarChart
+                                   data={{
+                                       labels: chartData.labels,
+                                       datasets: [{
+                                           data: chartData.data,
+                                       }],
+                                   }}
+                                   width={Dimensions.get("window").width - 40}
+                                   height={220}
+                                   withVerticalLines={true}
+                                   chartConfig={chartConfig}
+                                   fromZero={true}
+                                   style={styles.chartStyle}
+                               />
+                           </View>
+                       </>
+                    ) : (
+                <Text style={styles.noDataText}>No graph data available</Text>
+                )
             )}
         </View>
     );
@@ -135,8 +141,7 @@ const styles = StyleSheet.create({
         fontSize: 16,
         fontWeight: '600',
         color: Colors.light.text,
-        textAlign: 'left',
-        paddingLeft: 18,
+        textAlign: 'center',
     },
     chartStyle: {
         borderRadius: 16,
@@ -147,5 +152,11 @@ const styles = StyleSheet.create({
         fontSize: 18,
         fontWeight: 'bold',
         color: Colors.light.text,
+    },
+    noDataText: {
+        fontSize: 16,
+        color: 'grey',
+        textAlign: 'center',
+        marginTop: 20,
     },
 });
