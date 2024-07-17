@@ -22,7 +22,6 @@ export default function DashBoardTab() {
         useShadowColorFromDataset: false,
         style: {
             borderRadius: 16,
-
         },
     };
     useEffect(() => {
