@@ -22,7 +22,7 @@ export default function UserSignupTab() {
           source={{
             uri: item.profile,
           }}
-          style={{ height: 50, width: 50, marginRight: 10, borderRadius: 10 }}
+          style={styles.imageContainer}
         />
       ) : null}
       <View>
@@ -46,8 +46,6 @@ export default function UserSignupTab() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
     backgroundColor: Colors.light.background,
   },
   title: {
@@ -65,10 +63,11 @@ const styles = StyleSheet.create({
     marginVertical: 10,
     borderRadius: 8,
     backgroundColor: Colors.light.background,
-    width: "100%",
+    marginHorizontal: 20,
   },
   emailText: {
     fontSize: 16,
     color: Colors.light.text,
   },
+  imageContainer: { height: 50, width: 50, marginRight: 10, borderRadius: 10 },
 });
