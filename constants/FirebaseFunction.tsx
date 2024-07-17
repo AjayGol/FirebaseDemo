@@ -2,6 +2,7 @@ import {
   collection,
   getDocs,
   getFirestore,
+  orderBy,
   query,
   updateDoc,
   where,
@@ -92,4 +93,26 @@ const getAllUser = async () => {
   }
 };
 
-export { getUserDataByUserID, updateUserDataByUserID, getAllUser };
+const getGraphData = async () => {
+  const db = getFirestore();
+  const usersCollection = collection(db, "users");
+  const querySnapshot = await getDocs(
+    query(usersCollection, orderBy("createdAt", "asc")),
+  );
+
+  return querySnapshot.docs.map((doc) => {
+    const data = doc.data();
+    return {
+      id: doc.id,
+      name: data.name,
+      createdAt: data.createdAt.toDate(),
+    };
+  });
+};
+
+export {
+  getUserDataByUserID,
+  updateUserDataByUserID,
+  getAllUser,
+  getGraphData,
+};

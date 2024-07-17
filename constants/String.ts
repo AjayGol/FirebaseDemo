@@ -24,4 +24,31 @@ const dateFormat = (date: number | string) => {
 
   return `${timeComponent}, ${dateComponent}`;
 };
-export { emailValidation, dateFormat };
+
+const getMonthYearString = (date) => {
+  try {
+    const months = [
+      "Jan",
+      "Feb",
+      "Mar",
+      "Apr",
+      "May",
+      "June",
+      "July",
+      "Aug",
+      "Sep",
+      "Oct",
+      "Nov",
+      "Dec",
+    ];
+
+    const monthIndex = date.getMonth();
+    const year = date.getFullYear();
+
+    return `${months[monthIndex]} ${year}`;
+  } catch (e) {
+    console.log(e);
+  }
+};
+
+export { emailValidation, dateFormat, getMonthYearString };

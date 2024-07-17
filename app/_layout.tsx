@@ -15,7 +15,7 @@ import { SQLiteProvider } from "expo-sqlite";
 import { createDataBase } from "@/constants/SQLFuction";
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
-SplashScreen.preventAutoHideAsync();
+SplashScreen.preventAutoHideAsync().then((r) => console.log(r));
 
 export default function RootLayout() {
   const colorScheme = useColorScheme();
@@ -25,7 +25,7 @@ export default function RootLayout() {
 
   useEffect(() => {
     if (loaded) {
-      SplashScreen.hideAsync();
+      SplashScreen.hideAsync().then((r) => console.log(r));
     }
   }, [loaded]);
 

@@ -16,7 +16,6 @@ import { getStorage } from "@firebase/storage";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { useNavigation } from "@react-navigation/native";
 import { updateUserDataByUserID } from "@/constants/FirebaseFunction";
-import * as SQLite from "expo-sqlite";
 import { deleteUserWhileLogout } from "@/constants/SQLFuction";
 const { buttonGradient } = Colors.light;
 
@@ -39,7 +38,7 @@ export default function ProfileTab() {
 
   const auth = getAuth(firebaseApp);
 
-  const pickImage = async (index) => {
+  const pickImage = async () => {
     // No permissions request is necessary for launching the image library
     let result = await ImagePicker.launchImageLibraryAsync({
       mediaTypes: ImagePicker.MediaTypeOptions.All,
@@ -75,7 +74,9 @@ export default function ProfileTab() {
         index: 0,
         routes: [{ name: "login-screen" }],
       });
-    } catch (error) {}
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const uploadImage = async (imageUri: string) => {
