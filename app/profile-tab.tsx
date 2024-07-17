@@ -17,6 +17,7 @@ import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { useNavigation } from "@react-navigation/native";
 import { updateUserDataByUserID } from "@/constants/FirebaseFunction";
 import * as SQLite from "expo-sqlite";
+import { deleteUserWhileLogout } from "@/constants/SQLFuction";
 const { buttonGradient } = Colors.light;
 
 export default function ProfileTab() {
@@ -69,7 +70,7 @@ export default function ProfileTab() {
   const logOutUser = async () => {
     try {
       await signOut(auth);
-      await deleteTodoById();
+      await deleteUserWhileLogout();
       navigation.reset({
         index: 0,
         routes: [{ name: "login-screen" }],
@@ -110,17 +111,6 @@ export default function ProfileTab() {
         console.error("Error uploading file:", error);
         return "";
       });
-  };
-
-  const deleteTodoById = async () => {
-    const db = await SQLite.openDatabaseAsync("test.db");
-    try {
-      await db.runAsync("DELETE FROM todos WHERE id = $id", {
-        $id: 1,
-      });
-    } catch (error) {
-      console.error(`Error deleting todo with id ${1}:`, error);
-    }
   };
 
   return (

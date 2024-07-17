@@ -1,16 +1,12 @@
 import { useEffect } from "react";
 import { useNavigation } from "@react-navigation/native";
-import { ActivityIndicator, View } from "react-native";
+import { ActivityIndicator, StyleSheet, View } from "react-native";
 import screenNames from "@/components/navigation/ScreenNames";
 import firebaseApp from "@/firebase";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { getUserDataByUserID } from "@/constants/FirebaseFunction";
 import { useSQLiteContext } from "expo-sqlite";
-
-interface Todo {
-  value: string;
-  intValue: number;
-}
+import { getUser } from "@/constants/SQLFuction";
 
 export default function Page() {
   const navigation = useNavigation();
@@ -19,7 +15,7 @@ export default function Page() {
   useEffect(() => {
     const checkLoginState = async () => {
       try {
-        const result = await db.getAllAsync<Todo>("SELECT * FROM todos");
+        const result = await getUser(db);
 
         if (!result.length) {
           navigation.reset({
@@ -38,7 +34,6 @@ export default function Page() {
               );
               const userID = userCredential.user.uid;
               await getUserDataByUserID(userID);
-              // await getUserDataByUserID(userID);
 
               navigation.reset({
                 index: 0,
@@ -53,12 +48,19 @@ export default function Page() {
         console.error("Failed to fetch the token from storage", error);
       }
     };
-    checkLoginState();
+
+    checkLoginState().then((r) =>
+      console.log("check user already login or not"),
+    );
   }, []);
 
   return (
-    <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
+    <View style={styles.container}>
       <ActivityIndicator />
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  container: { flex: 1, alignItems: "center", justifyContent: "center" },
+});

@@ -1,5 +1,12 @@
 import React, { useState } from "react";
-import { View, TextInput, Text, TouchableOpacity, Alert } from "react-native";
+import {
+  View,
+  TextInput,
+  Text,
+  TouchableOpacity,
+  Alert,
+  ActivityIndicator,
+} from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import screenNames from "@/components/navigation/ScreenNames";
@@ -9,7 +16,7 @@ import { Colors } from "@/constants/Colors";
 import firebaseApp from "@/firebase";
 import { styles } from "@/app/styles";
 import { getUserDataByUserID } from "@/constants/FirebaseFunction";
-import * as SQLite from "expo-sqlite";
+import { storeUserData } from "@/constants/SQLFuction";
 const { buttonGradient } = Colors.light;
 
 export default function LoginScreen() {
@@ -28,6 +35,7 @@ export default function LoginScreen() {
   } = styles;
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
+  const [loading, setLoading] = useState<boolean>(false);
 
   const handleLogin = async () => {
     if (emailValidation(email)) {
@@ -38,6 +46,7 @@ export default function LoginScreen() {
       return;
     }
     try {
+      setLoading(true);
       const auth = getAuth(firebaseApp);
       const userCredential = await signInWithEmailAndPassword(
         auth,
@@ -47,18 +56,15 @@ export default function LoginScreen() {
       const userID = userCredential.user.uid;
       await getUserDataByUserID(userID);
       // const accessToken = await userCredential.user.getIdToken();
-      const db = await SQLite.openDatabaseAsync("test.db");
-      await db.runAsync(
-        "INSERT INTO todos (email, password) VALUES (?, ?)",
-        email,
-        password,
-      );
+      await storeUserData(email, password);
+      setLoading(false);
 
       navigation.reset({
         index: 0,
         routes: [{ name: screenNames.TabBar }],
       } as never);
     } catch (error) {
+      setLoading(false);
       Alert.alert("Invalid Credential");
       console.log(error);
     }
@@ -117,7 +123,9 @@ export default function LoginScreen() {
           end={{ x: 0, y: 1 }}
           style={gradient}
         >
-          <Text style={signUpText}>Log In</Text>
+          {(!loading && <ActivityIndicator />) || (
+            <Text style={signUpText}>Log In</Text>
+          )}
         </LinearGradient>
       </TouchableOpacity>
     </View>

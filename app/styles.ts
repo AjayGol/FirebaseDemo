@@ -37,10 +37,6 @@ export const styles = StyleSheet.create({
     color: background,
     fontSize: 19,
     fontWeight: "700",
-    paddingHorizontal: 70,
-    paddingVertical: 8,
-    alignItems: "center",
-    justifyContent: "center",
   },
   dividerContainer: {
     flexDirection: "row",
@@ -167,6 +163,10 @@ export const styles = StyleSheet.create({
   gradient: {
     borderRadius: 6,
     overflow: "hidden",
+    height: 40,
+    width: 200,
+    alignItems: "center",
+    justifyContent: "center",
   },
   imageContainer: {
     textAlign: "center",

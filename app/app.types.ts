@@ -1,15 +1,6 @@
-import React from "react";
-
-interface ListDataProps {
-  createdAt: CreatedList;
+interface UserObj {
   email: string;
-  text: string;
-  image?: string;
+  password: string;
 }
 
-interface CreatedList {
-  nanoseconds: number;
-  seconds: number;
-}
-
-export type { ListDataProps };
+export type { UserObj };
