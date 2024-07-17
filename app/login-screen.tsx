@@ -123,7 +123,7 @@ export default function LoginScreen() {
           end={{ x: 0, y: 1 }}
           style={gradient}
         >
-          {(!loading && <ActivityIndicator />) || (
+          {(loading && <ActivityIndicator />) || (
             <Text style={signUpText}>Log In</Text>
           )}
         </LinearGradient>
